@@ -22,6 +22,8 @@ DEFAULT_SESSION_SQLS = ['SET @@session.time_zone="+0:00"',
                         'SET @@session.net_read_timeout=3600',
                         'SET @@session.innodb_lock_wait_timeout=3600']
 
+MAX_ALLOWED_PACKET = 512*1024*1024,  # 512 MB
+
 
 @backoff.on_exception(backoff.expo,
                       (pymysql.err.OperationalError),
@@ -91,6 +93,7 @@ class MySQLConnection(pymysql.connections.Connection):
             "cursorclass": config.get("cursorclass") or pymysql.cursors.SSCursor,
             "connect_timeout": CONNECT_TIMEOUT_SECONDS,
             "charset": "utf8",
+            "max_allowed_packet": MAX_ALLOWED_PACKET,
         }
 
         ssl_arg = None
