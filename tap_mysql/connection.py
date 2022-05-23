@@ -10,7 +10,7 @@ from pymysql.constants import CLIENT
 
 LOGGER = singer.get_logger('tap_mysql')
 
-CONNECT_TIMEOUT_SECONDS = 300
+CONNECT_TIMEOUT_SECONDS = 3600  # 1h
 
 # We need to hold onto this for self-signed SSL
 MATCH_HOSTNAME = ssl.match_hostname
