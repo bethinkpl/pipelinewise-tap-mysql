@@ -22,7 +22,7 @@ DEFAULT_SESSION_SQLS = ['SET @@session.time_zone="+0:00"',
                         'SET @@session.net_read_timeout=3600',
                         'SET @@session.innodb_lock_wait_timeout=3600']
 
-MAX_ALLOWED_PACKET = 512*1024*1024,  # 512 MB
+MAX_ALLOWED_PACKET = 512*1024*1024*1024,  # 512 GB
 
 
 @backoff.on_exception(backoff.expo,
